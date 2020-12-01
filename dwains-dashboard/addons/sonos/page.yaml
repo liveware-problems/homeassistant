@@ -1,0 +1,131 @@
+# dwains_theme
+## Room add-on: Sonos
+## Created by Jeroen Klompen
+## Version: 1.0.2
+
+- type: custom:dwains-flexbox-card
+  # items_classes: 'col-xs-12 col-sm-5'
+  padding: true
+  cards:
+    - type: entities
+      item_classes: 'col-xs-12 col-sm-5 d-block'
+      style: |
+        ha-card {
+          border-radius: 5px;
+          background-color: var(--dwains-theme-primary);
+          --paper-slider-knob-color: var(--dwains-theme-names);
+          --paper-slider-active-color: var(--dwains-theme-names);
+          --paper-slider-knob-start-color: var(--dwains-theme-grey);
+          --paper-slider-container-color: var(--dwains-theme-grey);
+        }
+      entities:
+        - entity: {{ (data | fromjson)['entity'] }}
+          group: true
+          # name: Sonos
+          info: scroll
+          artwork: full-cover-fit
+          type: 'custom:mini-media-player'
+          hide:
+            power: true
+            icon: true
+            source: true
+            icon_state: true
+            power_color: true
+            volume: true
+            controls: true
+          speaker_group:
+            platform: sonos
+            show_group_count: true
+            entities:
+              - entity_id: media_player.kitchen
+                name: 'Kitchen'
+              - entity_id: media_player.family_room
+                name: 'Family Room'
+              - entity_id: media_player.dining_room
+                name: 'Dining Room'
+              - entity_id: media_player.patio
+                name: 'Garden'
+
+
+    - type: entities
+      item_classes: 'col-xs-12 col-sm-7 d-block'
+      style: |
+        ha-card {
+          border-radius: 5px;
+          background-color: var(--dwains-theme-primary);
+          --paper-slider-knob-color: var(--dwains-theme-names);
+          --paper-slider-active-color: var(--dwains-theme-names);
+          --paper-slider-knob-start-color: var(--dwains-theme-grey);
+          --paper-slider-container-color: var(--dwains-theme-grey);
+        }
+      entities:
+        - type: 'custom:slider-entity-row'
+          entity: media_player.kitchen
+          icon: 'mdi:speaker'
+          name: 'Kitchen'
+        - type: 'custom:slider-entity-row'
+          entity: media_player.family_room
+          icon: 'mdi:speaker'
+          name: 'Family Room'
+        - type: 'custom:slider-entity-row'
+          entity: media_player.dining_room
+          icon: 'mdi:speaker'
+          name: 'Dining Room'
+        - type: 'custom:slider-entity-row'
+          entity: media_player.patio
+          icon: 'mdi:speaker'
+          name: 'Garden'
+
+        - entity: {{ (data | fromjson)['entity'] }}
+          group: true
+          # name: Sonos
+          info: scroll
+          # artwork: full-cover
+          type: 'custom:mini-media-player'
+          hide:
+            power: true
+            icon: true
+            source: true
+            icon_state: false
+            power_color: false
+            volume: true
+            shuffle: false
+          speaker_group:
+            platform: sonos
+            show_group_count: true
+            entities:
+              - entity_id: media_player.kitchen
+                name: 'Kitchen'
+              - entity_id: media_player.family_room
+                name: 'Family Room'
+              - entity_id: media_player.dining_room
+                name: 'Dining Room'
+              - entity_id: media_player.patio
+                name: 'Garden'
+          shortcuts:
+            columns: 3
+            hide_when_off: true
+            label: Select Input
+            align_text: center
+            buttons:
+              - name: Forth 1
+                type: source
+                id: Forth 1
+              - name: Capital
+                type: source
+                id: Capital UK
+              - name: Dance UK
+                type: source
+                id: Dance Uk at danceradiouk
+              - name: Partay!
+                type: source
+                id: Open House
+              - name: Mellow
+                type: source
+                id: DiffrentStrokes.m3u
+              - name: Spotify
+                type: source
+                id: Sw
+              - name: TV
+                type: source
+                id: TV
